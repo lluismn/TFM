@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-header {
+/* header {
   background-color: #404040;
   padding: 1rem;
 }
@@ -16,4 +16,66 @@ header a {
   color: white;
   font-weight: bold;
   text-decoration: none;
+} */
+
+.pagina-contenedor {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.productos {
+  display: flex;
+  width: auto;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.producto {
+  border: 1px #404040 solid;
+  /* width: 25%; */
+  margin: 1rem;
+
+}
+
+.producto img {
+  width: 100%;
+  max-width: 400px;
+  max-height: 421px;
+  overflow: hidden;
+}
+
+.info-producto {
+  padding: 1rem;
+}
+
+.carta-producto {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.valoracion span {
+  color: rgb(9, 124, 86);
+}
+
+/* CSS modificado de los botones de bootrsap */
+.btn-primary {
+  background-color: rgb(11, 163, 113);
+  border: 1px solid rgb(9, 124, 86);
+}
+
+.img-larger {
+  max-width: 100%;
+}
+
+.img-thumbnail {
+  height: 80px;
+}
+
+.small-container {
+  max-width: 600px;
 }
