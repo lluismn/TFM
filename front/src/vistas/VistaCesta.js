@@ -9,6 +9,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function VistaCesta() {
     const navigate = useNavigate();
@@ -18,10 +19,10 @@ function VistaCesta() {
     // Funcion para modificar la cantidad de la cesta llamando a la base de datos
     const actualizaCestaHandler = async (item, quantity) => {
         // Traemos el objeto
-        const {data} = await axios.get(`/api/productos/${item.id}`);
+        const {data} = await axios.get(`/api/productos/${item._id}`);
 
         if (data.numeroEnStock < quantity) {
-            window.alert(`Lo sentimos. ${item.nombre} está fuera de stock`)
+            toast.error(`Lo sentimos. ${item.nombre} está fuera de stock`)
             return;
         }
 
@@ -38,7 +39,8 @@ function VistaCesta() {
 
     const pagarHandler = () => {
         // Creamos una query que si el usuario no esta logeado, nos envia a la pagina de inciar sesión, sino lo envia a la pagina de envios
-        navigate('/login?redirect=/envio');
+        navigate('/login?redirect=/envio');  
+       
     }
 
     return (
@@ -59,11 +61,11 @@ function VistaCesta() {
                     ):
                     // Si hay objetos, mostramos lo objetos que haya seleccionado el usuario
                     (
-                        <ListGroup>
+                        <ListGroup className="tarjeta">
                             {cestaItems.map((item) => (
-                                <ListGroup.Item key={item.id}>
+                                <ListGroup.Item key={item._id}>
                                     <Row className="align-items-center">
-                                        <Col md={4}>
+                                        <Col md={5}>
                                             <img src={item.imagen} alt={item.nombre} className="img-fluid rounded img-thumbnail"></img>{' '} 
                                             <Link to={`/producto/${item.slug}`}>{item.nombre}</Link>
                                         </Col>
@@ -83,7 +85,7 @@ function VistaCesta() {
                                                     <i className="fas fa-plus-circle"></i>
                                             </Button>{'  '}
                                         </Col>
-                                        <Col md={3}>{item.precio}€</Col>
+                                        <Col md={2}>{item.precio}€</Col>
                                         <Col md={2}>
                                             {/* Boton para borrar el producto de la cesta */}
                                             <Button 

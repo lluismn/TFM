@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F3F3F3;
 }
 
 /* header {
@@ -20,6 +21,7 @@ header a {
 
 .pagina-contenedor {
   min-height: 100vh;
+  transition: 0.5s
 }
 
 main {
@@ -56,16 +58,27 @@ main {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  background-color: #cad5a6;
+}
+
+.texto-carta {
+  color: black;
+  text-decoration: none;
 }
 
 .valoracion span {
-  color: rgb(9, 124, 86);
+  color: #AF2655;
 }
 
 /* CSS modificado de los botones de bootrsap */
 .btn-primary {
-  background-color: rgb(11, 163, 113);
-  border: 1px solid rgb(9, 124, 86);
+  background-color: #860A35;
+  border: 1px solid #860A35;
+}
+
+.btn-primary:hover {
+  background-color: #560924;
+  border: #560924;
 }
 
 .img-larger {
@@ -79,3 +92,99 @@ main {
 .small-container {
   max-width: 600px;
 }
+
+.checkout-pasos > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+
+.checkout-pasos > div.active {
+  border-bottom: 0.2rem solid #551028;
+  color: #551028;
+}
+
+.fondo-barra {
+  background-color: #551028;
+  transition: 1s;
+}
+.fondo-barra-boton {
+  background-color: #AF2655;
+  border: #AF2655;
+}
+.fondo-barra-boton:hover {
+  background-color: #560924;
+  border: #560924;
+}
+
+/* Barra lateral */
+.navbar-brand {
+  font-weight: bold;
+}
+
+.side-navbar{
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: #551028;
+  transition: 0.5s;
+}
+
+.site-container {
+  transition: 0.4s;
+}
+
+.active-cont {
+  margin-left: 240px;
+}
+
+.active-nav {
+  left: 0;
+}
+
+.link-texto {
+  color: white;
+  margin-top: 1rem;
+  text-decoration: none;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.link-container {
+  border-radius: 1rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  width: 50%;
+  gap: 1rem;
+}
+.link-container:hover {
+  background-color: #560924;
+  color: white;
+  border-radius: 1rem;
+  transition: 0.2s;
+}
+
+.texto-categoria {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+.button-search {
+  background-color: #AF2655;
+  border: #AF2655;
+}
+.button-search:hover {
+  background-color: #560924;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.clothy {
+  padding-left: 1rem;
+}
+
+.nav-link {
+  color: white;
+}
+

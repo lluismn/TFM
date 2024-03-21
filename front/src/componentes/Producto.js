@@ -5,6 +5,7 @@ import Valoracion from "./Valoracion";
 import axios from "axios";
 import { useContext } from "react";
 import { Tienda } from "../vistas/VistaTienda";
+import { toast } from "react-toastify";
 
 
 function Producto(props) {
@@ -14,10 +15,10 @@ function Producto(props) {
     const {cesta: {cestaItems}} = state;
 
     const añadirALaCestaHandler = async (item) => {
-        const existeItem = cestaItems.find((x) => x.id === producto.id);
+        const existeItem = cestaItems.find((x) => x._id === producto._id);
         const quantity = existeItem ? existeItem.quantity + 1 : 1;
         // Traemos el objeto
-        const {data} = await axios.get(`/api/productos/${item.id}`);
+        const {data} = await axios.get(`/api/productos/${item._id}`);
 
         if (data.numeroEnStock < quantity) {
             window.alert(`Lo sentimos. ${item.nombre} está fuera de stock`)
@@ -28,6 +29,7 @@ function Producto(props) {
             type:'CESTA_AÑADIR_ITEM', 
             payload: {...item, quantity} // payload añade el producto al contador de la cesta
         });
+        toast.success('Se ha añadido el producto a la cesta')
     }
 
     // HTML de la targeta del producto
@@ -39,8 +41,8 @@ function Producto(props) {
             </Link>
 
             <Card.Body className="carta-producto">
-                <Link to={`/producto/${producto.slug}`}>
-                    <Card.Title>{producto.nombre}</Card.Title>
+                <Link to={`/producto/${producto.slug}`} className='texto-carta'>
+                    <Card.Title className="texto-carta">{producto.nombre}</Card.Title>
                 </Link>
                 <Valoracion valoracion={producto.valoracion} numReviews={producto.numReviews} />
                 <Card.Text>{producto.precio}€</Card.Text>
@@ -54,7 +56,7 @@ function Producto(props) {
                         Añadir a la cesta
                 </Button>
                 }
-                {/* TODO Puedo añadir un mensaje de que se ha añadido a la cesta ya que no redirigimos */}
+                
             </Card.Body>
         </Card>
     );

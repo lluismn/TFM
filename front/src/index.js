@@ -6,13 +6,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async'
 import { ProviderTienda } from './vistas/VistaTienda';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ProviderTienda>
       <HelmetProvider>
-        <App />
+        <PayPalScriptProvider deferLoading={true}>   {/*  Usamos esta dependencia para poder usar la api de Paypal que ha denevolver a la app  */}
+          <App />
+        </PayPalScriptProvider>
       </HelmetProvider>
     </ProviderTienda>
   </React.StrictMode>
